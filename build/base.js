@@ -15,15 +15,12 @@ module.exports = {
 
   //alias path
   resolve: {
-    extensions: ['.js'],
-    alias: {
-      '@util': path.resolve(__dirname, '../src/util')
-    }
+    extensions: ['.js']
   },
 
   // devDependencies require no in entry
   externals: {
-    /*['blue-utils']: {
+    ['blue-utils']: {
       commonjs: "blue-utils",
       commonjs2: "blue-utils",
       root:'blueUtils'
@@ -32,7 +29,7 @@ module.exports = {
       commonjs: "blue-queue-pipe",
       commonjs2: "blue-queue-pipe",
       root:'BlueQueuePipe'
-    }*/
+    }
   },
 
   // use loader

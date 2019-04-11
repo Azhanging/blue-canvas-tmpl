@@ -1,22 +1,22 @@
 /*!
  * 
- * blue-canvas-tmpl.js 1.0.0
+ * blue-canvas-tmpl.js 1.0.3
  * (c) 2016-2020 Blue
  * Released under the MIT License.
  * https://github.com/azhanging/blue-canvas-tmpl
- * time:Wed, 10 Apr 2019 17:23:35 GMT
+ * time:Thu, 11 Apr 2019 16:11:01 GMT
  * 		
  */
 (function webpackUniversalModuleDefinition(root, factory) {
 	if(typeof exports === 'object' && typeof module === 'object')
-		module.exports = factory();
+		module.exports = factory(require("blue-utils"), require("blue-queue-pipe"));
 	else if(typeof define === 'function' && define.amd)
-		define([], factory);
+		define([, ], factory);
 	else if(typeof exports === 'object')
-		exports["BlueCanvasTmpl"] = factory();
+		exports["BlueCanvasTmpl"] = factory(require("blue-utils"), require("blue-queue-pipe"));
 	else
-		root["BlueCanvasTmpl"] = factory();
-})(typeof self !== 'undefined' ? self : this, function() {
+		root["BlueCanvasTmpl"] = factory(root["blueUtils"], root["BlueQueuePipe"]);
+})(typeof self !== 'undefined' ? self : this, function(__WEBPACK_EXTERNAL_MODULE_0__, __WEBPACK_EXTERNAL_MODULE_8__) {
 return /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
@@ -79,238 +79,54 @@ return /******/ (function(modules) { // webpackBootstrap
 /******/ 	__webpack_require__.p = "./static";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 2);
+/******/ 	return __webpack_require__(__webpack_require__.s = 3);
 /******/ })
 /************************************************************************/
 /******/ ([
 /* 0 */
 /***/ (function(module, exports) {
 
-//blue utils 常用工具类 ES5
-function BlueUtils() {}
-
-//工具方法
-BlueUtils.prototype = {
-
-  constructor: BlueUtils,
-
-  //是否为空的对象
-  nullPlainObject: function (val) {
-    return JSON.stringify(val) === "{}";
-  },
-
-  //是否为字符串
-  isStr: function (val) {
-    return typeof val === 'string';
-  },
-
-  //是否为对象类型
-  isPlainObject: function (val) {
-    return val && val !== null && val.toString() === '[object Object]';
-  },
-
-  //是否为数组
-  isArray: function (val) {
-    return val instanceof Array;
-  },
-
-  //是否为对象
-  isObjcet: function (val) {
-    return this.isPlainObject(val) || this.isArray(val);
-  },
-
-  //是否为定义
-  isDef: function (val) {
-    return val !== undefined && val !== null;
-  },
-
-  //是否为未定义
-  isUndef: function (val) {
-    return val === undefined || val === null;
-  },
-
-  //val是否为空
-  isBlankSpace: function (val) {
-    return val.trim().length === 0;
-  },
-
-  //是否为true
-  isTrue: function (bool) {
-    return bool === true;
-  },
-
-  //是否为false
-  isFalse: function (bool) {
-    return bool === false;
-  },
-
-  //是否为function
-  isFunction: function (fn) {
-    return typeof fn === 'function';
-  },
-
-  //执行某一段在context 中的 function ，带上指定的arguments
-  hook: function (context, callback, args) {
-
-    if (callback === undefined) callback = function () {};
-
-    if (args === undefined) args = [];
-
-    if (this.isFunction(callback)) {
-      return callback.apply(context, args);
-    }
-  },
-
-  //遍历
-  each: function (obj, cb, isReturn) {
-
-    if (!isReturn) isReturn = false;
-
-    if (this.isUndef(obj)) return;
-
-    var i = 0,
-        index = 0,
-        newVal = [],
-        len = obj.length;
-
-    if (this.isArray(obj) || this.isStr(obj)) {
-      for (; i < len; i++) {
-        if (isReturn) {
-          newVal.push(cb(obj[i], i));
-        } else {
-          cb(obj[i], i);
-        }
-      }
-    } else if (this.isPlainObject(obj)) {
-      for (i in obj) {
-        if (!obj.hasOwnProperty(i)) continue;
-        if (isReturn) {
-          newVal.push(cb(obj[i], i, index++));
-        } else {
-          cb(obj[i], i, index++);
-        }
-      }
-    }
-
-    if (isReturn) return newVal;
-  },
-
-  //深拷贝
-  deepCopy: function (obj) {
-    if (!obj || !(obj instanceof Array) && !(obj.toString() === "[object Object]")) return obj;
-    var _obj = obj instanceof Array ? [] : {};
-    for (var key in obj) {
-      if (!obj.hasOwnProperty(key)) continue;
-      if (obj instanceof Array || obj instanceof Object) {
-        _obj[key] = this.deepCopy(obj[key]);
-      } else {
-        _obj[key] = obj[key];
-      }
-    }
-    return _obj;
-  },
-
-  //扩展
-  extend: function (object, _object, isDeep) {
-
-    if (isDeep === undefined) isDeep = true;
-
-    if (isDeep) object = this.deepCopy(object);
-
-    var oldObjKeys = this.each(object, function (obj, key) {
-      return key;
-    }, true);
-
-    this.each(_object, function (obj, key) {
-
-      var findIndexInOld = oldObjKeys.indexOf(key);
-
-      if (findIndexInOld != -1) {
-        oldObjKeys.splice(findIndexInOld, 1);
-      }
-
-      if (this.isPlainObject(obj)) {
-        if (!object[key]) {
-          object[key] = {};
-        }
-        this.extend(object[key], obj, isDeep);
-      }
-      object[key] = obj;
-    }.bind(this));
-
-    this.each(oldObjKeys, function (key) {
-      _object[key] = object[key];
-    });
-
-    return object;
-  },
-
-  //把当前key-value复制到对应对象的key-value上
-  copy: function (object, _object) {
-    this.each(_object, function (obj, key) {
-      object[key] = obj;
-    });
-  },
-
-  //获取表达式
-  getRegExp: function (expr) {
-    var tm = '\\/*.?+$^[](){}|\'\"';
-    this.each(tm, function (tmItem, index) {
-      expr = expr.replace(new RegExp('\\' + tmItem, 'g'), '\\' + tmItem);
-    });
-    return expr;
-  },
-
-  //或者object的长度
-  getObjLen: function (obj) {
-    var index = 0;
-    this.each(obj, function () {
-      ++index;
-    });
-    return index;
-  },
-
-  //获取链接中的参数
-  getLinkParams: function (link) {
-    var linkType = link.split('?');
-    var queryString = linkType[1];
-    if (linkType.length > 0 && queryString && queryString !== '') {
-      return queryString;
-    }
-    return '';
-  },
-
-  //query string 转化为 object
-  parseParams: function (queryString) {
-    var linkQuery = {};
-    if (!queryString) return linkQuery;
-    //是否存在原query
-    (queryString.split('&') || []).forEach(function (queryItemString) {
-      var splitQueryItem = queryItemString.split('=');
-      var key = splitQueryItem[0];
-      var value = splitQueryItem[1];
-      linkQuery[key] = value;
-    });
-    return linkQuery;
-  },
-
-  //query 转化为 string
-  stringifyParams: function (query) {
-    if (!this.isPlainObject(query)) return '';
-    var _query = [];
-    this.each(query, function (value, key) {
-      _query.push(key + '=' + encodeURIComponent(value));
-    });
-    return _query.join('&');
-  }
-};
-
-var blueUtils = new BlueUtils();
-
-module.exports = blueUtils;
+module.exports = __WEBPACK_EXTERNAL_MODULE_0__;
 
 /***/ }),
 /* 1 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (immutable) */ __webpack_exports__["a"] = initCanvas;
+/* harmony export (immutable) */ __webpack_exports__["b"] = saveCanvasDefaultProperties;
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_blue_utils__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_blue_utils___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_blue_utils__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__canvas_properties__ = __webpack_require__(6);
+
+
+
+function initCanvas() {
+  const options = this.options;
+  if (!options.el) return {};
+  const canvas = document.querySelector(options.el);
+  if (!canvas) return {};
+  const canvasCtx = canvas.getContext('2d');
+  canvas.width = options.width;
+  canvas.height = options.height;
+  return {
+    canvasCtx,
+    canvas
+  };
+}
+
+//save canvas default attributes
+function saveCanvasDefaultProperties() {
+  if (!this.canvas.defaultCanvasProperties) {
+    this.canvas.defaultCanvasProperties = {};
+    __WEBPACK_IMPORTED_MODULE_0_blue_utils___default.a.each(__WEBPACK_IMPORTED_MODULE_1__canvas_properties__["a" /* default */], key => {
+      this.canvas.defaultCanvasProperties[key] = this.canvasCtx[key];
+    });
+  }
+}
+
+/***/ }),
+/* 2 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -328,7 +144,10 @@ function render() {
       renderImg.call(this, item);
     } else if (item.type === 'text') {
       renderText.call(this, item);
+    } else if (__WEBPACK_IMPORTED_MODULE_0_blue_utils___default.a.isFunction(item)) {
+      __WEBPACK_IMPORTED_MODULE_0_blue_utils___default.a.hook(this, item);
     }
+    this.resetCanvasProperties();
   });
 }
 
@@ -353,25 +172,28 @@ function renderText(text) {
 }
 
 /***/ }),
-/* 2 */
+/* 3 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__instance__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__instance__ = __webpack_require__(4);
 
 
 /* harmony default export */ __webpack_exports__["default"] = (__WEBPACK_IMPORTED_MODULE_0__instance__["a" /* default */]);
 
 /***/ }),
-/* 3 */
+/* 4 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__init__ = __webpack_require__(4);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__render__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__arc__ = __webpack_require__(8);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__text__ = __webpack_require__(9);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__init__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__render__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__arc__ = __webpack_require__(9);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__text__ = __webpack_require__(10);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_blue_utils__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_blue_utils___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_blue_utils__);
+
 
 
 
@@ -381,39 +203,27 @@ class BlueCanvasTmpl {
   constructor(opts = {
     //创建后的钩子
     created() {},
-    renderList: [/*{
-                 type: 'img',
-                 src: '',
-                 x: 0,
-                 y: 0,
-                 width: 0,
-                 height: 0,
-                 created() {
-                 //创建前的钩子
-                 },
-                 rendered() {
-                 //渲染后的钩子
-                 }
-                 }, {
-                 type: 'text',
-                 font: '',
-                 style: '',
-                 content: '',
-                 x: 0,
-                 y: 0
-                 }*/],
+    renderList: [],
     //渲染完毕后的钩子
     rendered() {}
   }) {
-    this.init(opts);
+    this.options = opts;
+    this.init();
   }
 
-  init(opts) {
-    __WEBPACK_IMPORTED_MODULE_0__init__["a" /* default */].call(this, opts);
+  init() {
+    __WEBPACK_IMPORTED_MODULE_0__init__["a" /* default */].call(this);
   }
 
   renderText(text) {
     __WEBPACK_IMPORTED_MODULE_1__render__["b" /* renderText */].call(this, text);
+  }
+
+  //初始化canvas context的属性
+  resetCanvasProperties() {
+    __WEBPACK_IMPORTED_MODULE_4_blue_utils___default.a.each(this.canvas.defaultCanvasProperties, (value, key) => {
+      this.canvasCtx[key] = value;
+    });
   }
 
   //更新
@@ -442,20 +252,20 @@ class BlueCanvasTmpl {
 /* harmony default export */ __webpack_exports__["a"] = (BlueCanvasTmpl);
 
 /***/ }),
-/* 4 */
+/* 5 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__canvas__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__canvas__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_blue_utils__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_blue_utils___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_blue_utils__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__img__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__img__ = __webpack_require__(7);
+
 
 
 
 
 function init(opts) {
-  this.options = opts;
   //预加载队列
   this.loadQueue = [];
   this.id = 0;
@@ -466,6 +276,7 @@ function init(opts) {
   }
   this.canvasCtx = canvasCtx;
   this.canvas = canvas;
+  __WEBPACK_IMPORTED_MODULE_0__canvas__["b" /* saveCanvasDefaultProperties */].call(this);
   //创建完毕的钩子
   __WEBPACK_IMPORTED_MODULE_1_blue_utils___default.a.hook(this, this.options.created);
   //预加载
@@ -475,36 +286,26 @@ function init(opts) {
 /* harmony default export */ __webpack_exports__["a"] = (init);
 
 /***/ }),
-/* 5 */
+/* 6 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (immutable) */ __webpack_exports__["a"] = initCanvas;
-function initCanvas() {
-  const options = this.options;
-  if (!options.el) return {};
-  const canvas = document.querySelector(options.el);
-  if (!canvas) return {};
-  const canvasCtx = canvas.getContext('2d');
-  canvas.width = options.width;
-  canvas.height = options.height;
-  return {
-    canvasCtx,
-    canvas
-  };
-}
+//default canvas config
+const canvasProperties = ["fillStyle", "filter", "font", "globalAlpha", "globalCompositeOperation", "imageSmoothingEnabled", "imageSmoothingQuality", "lineCap", "lineDashOffset", "lineJoin", "lineWidth", "miterLimit", "shadowBlur", "shadowColor", "shadowOffsetX", "shadowOffsetY", "strokeStyle", "textAlign", "textBaseline"];
+
+/* harmony default export */ __webpack_exports__["a"] = (canvasProperties);
 
 /***/ }),
-/* 6 */
+/* 7 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (immutable) */ __webpack_exports__["a"] = load;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_blue_utils__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_blue_utils___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_blue_utils__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_blue_queue_pipe__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_blue_queue_pipe__ = __webpack_require__(8);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_blue_queue_pipe___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_blue_queue_pipe__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__render__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__render__ = __webpack_require__(2);
 
 
 
@@ -575,107 +376,13 @@ function loadImgs(imgs) {
 }
 
 /***/ }),
-/* 7 */
+/* 8 */
 /***/ (function(module, exports) {
 
-/*
-* blue-queue-pipe.js v1.0.0
-* (c) 2016-2020 Blue
-* Released under the MIT License.
-* https://github.com/azhanging/blue-queue-pipe
-* time:2019-4-9 00:43:15
-*/
-
-function BlueQueuePipe(opts) {
-  this._init(opts);
-}
-
-BlueQueuePipe.prototype = {
-
-  constructor: BlueQueuePipe,
-
-  _init: function (opts) {
-    if (!opts) opts = {};
-    //配置
-    this.options = opts;
-    //队列
-    this.queue = [];
-    //数据
-    this.data = opts.data || {};
-    //方法
-    this.methods = opts.methods || {};
-    //进列后的执行
-    this.enqueued = opts.enqueued;
-    //出列后的执行
-    this.dequeued = opts.dequeued;
-    //允许时钩子
-    this.ran = opts.ran;
-  },
-
-  setEnqueued: function (enqueue) {
-    this.options.enqueued = enqueue;
-  },
-
-  setDequeued: function (dequeue) {
-    this.options.dequeued = dequeue;
-  },
-
-  enqueue: function (obj) {
-    this.hook(this, this.enqueued, [this.queue.push(obj)]);
-  },
-
-  dequeue: function () {
-    var dequeue = this.queue.shift();
-    this.hook(this, this.dequeued, [dequeue]);
-    return dequeue;
-  },
-
-  isEmpty: function () {
-    return this.queue.length === 0;
-  },
-
-  clear: function () {
-    this.queue = [];
-  },
-
-  first: function () {
-    return this.queue[0];
-  },
-
-  last: function () {
-    return this.queue[this.queue.length - 1];
-  },
-
-  run: function () {
-    while (!this.isEmpty()) {
-      var dequeue = this.dequeue();
-      //如果队列项是function，执行
-      if (typeof dequeue === 'function') {
-        this.hook(this, this.ran, [dequeue({
-          queueCtx: this,
-          args: arguments
-        })]);
-      } else {
-        //非function给dequeued执行
-        this.hook(this, this.ran, [dequeue]);
-      }
-    }
-  },
-
-  hook: function (ctx, fn, args) {
-    typeof fn === 'function' && fn.apply(ctx, args instanceof Array ? args : []);
-  },
-
-  //使用方法
-  useMethod: function (name, args) {
-    this.hook(this, this.methods[name], args || []);
-  }
-};
-
-module.exports = BlueQueuePipe;
+module.exports = __WEBPACK_EXTERNAL_MODULE_8__;
 
 /***/ }),
-/* 8 */
+/* 9 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -699,12 +406,12 @@ function arc(type, x, y, width, height, radius, color) {
 }
 
 /***/ }),
-/* 9 */
+/* 10 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (immutable) */ __webpack_exports__["a"] = getByteLength;
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__device__ = __webpack_require__(10);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__device__ = __webpack_require__(11);
 
 
 function getByteLength(content, length, last) {
@@ -735,7 +442,7 @@ function getByteLength(content, length, last) {
 }
 
 /***/ }),
-/* 10 */
+/* 11 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";

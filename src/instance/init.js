@@ -1,9 +1,9 @@
 import { initCanvas } from "../canvas";
 import utils from 'blue-utils';
 import { load } from '../img';
+import { saveCanvasDefaultProperties } from '../canvas';
 
 function init(opts) {
-  this.options = opts;
   //预加载队列
   this.loadQueue = [];
   this.id = 0;
@@ -14,6 +14,7 @@ function init(opts) {
   }
   this.canvasCtx = canvasCtx;
   this.canvas = canvas;
+  saveCanvasDefaultProperties.call(this);
   //创建完毕的钩子
   utils.hook(this, this.options.created);
   //预加载

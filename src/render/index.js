@@ -8,7 +8,10 @@ export default function render() {
       renderImg.call(this, item);
     } else if (item.type === 'text') {
       renderText.call(this, item);
+    } else if (utils.isFunction(item)) {
+      utils.hook(this, item);
     }
+    this.resetCanvasProperties();
   });
 }
 
