@@ -1,6 +1,6 @@
 {
   "name": "blue-canvas-tmpl",
-  "version": "1.0.3",
+  "version": "1.0.5",
   "description": "blue-canvas-tmpl",
   "main": "./index.js",
   "scripts": {
@@ -46,6 +46,6 @@
   },
   "dependencies": {
     "blue-queue-pipe": "^1.0.2",
-    "blue-utils": "^1.0.9"
+    "blue-utils": "^1.0.10"
   }
 }

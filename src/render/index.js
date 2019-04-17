@@ -2,7 +2,8 @@ import utils from 'blue-utils';
 
 //渲染
 export default function render() {
-  const renderList = this.options.renderList;
+  const options = this.options;
+  const renderList = options.renderList;
   (renderList || []).forEach((item) => {
     if (item.type === 'img') {
       renderImg.call(this, item);
@@ -13,6 +14,7 @@ export default function render() {
     }
     this.resetCanvasProperties();
   });
+  utils.hook(this, options.rendered);
 }
 
 //渲染图片

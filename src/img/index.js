@@ -13,7 +13,6 @@ export function load() {
         if (!this.isEmpty()) {
           utils.hook(this, this.dequeue());
         } else {
-          console.log('render');
           //没有就进行渲染
           render.call(blueCanvasTmpl);
         }
@@ -49,14 +48,13 @@ function loadImgs(imgs) {
         if (parseInt(image.id) === id) {
           img.image = image;
           //队列下一跳
-          console.log('success');
           this.loadQueue.useMethod('next');
         }
       };
 
       image.onerror = () => {
         //队列下一跳
-        console.log('error');
+        console.log(`load error:${image.src}`);
         this.loadQueue.useMethod('next');
       };
 
@@ -64,6 +62,5 @@ function loadImgs(imgs) {
 
     });
   });
-  console.log('next');
   this.loadQueue.useMethod('next');
 }

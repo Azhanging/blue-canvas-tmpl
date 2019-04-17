@@ -3,7 +3,7 @@ import utils from 'blue-utils';
 import { load } from '../img';
 import { saveCanvasDefaultProperties } from '../canvas';
 
-function init(opts) {
+function init() {
   //预加载队列
   this.loadQueue = [];
   this.id = 0;
