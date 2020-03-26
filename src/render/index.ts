@@ -5,7 +5,7 @@ export default function render() {
   const options = this.options;
   const renderList = options.renderList;
   (renderList || []).forEach((item) => {
-    if (item.type === 'img') {
+    if (item.type === 'image') {
       renderImg.call(this, item);
     } else if (item.type === 'text') {
       renderText.call(this, item);
@@ -18,22 +18,22 @@ export default function render() {
 }
 
 //渲染图片
-function renderImg(img) {
+function renderImg(opts) {
   //插入图片
-  if (img.image) {
-    utils.hook(this, img.created, [img]);
-    this.canvasCtx.drawImage(img.image, img.x, img.y, img.width, img.height);
-    utils.hook(this, img.rendered, [img]);
+  if (opts.image) {
+    utils.hook(this, opts.created, [opts]);
+    this.canvasCtx.drawImage(opts.image, opts.x, opts.y, opts.width, opts.height);
+    utils.hook(this, opts.rendered, [opts]);
   }
 }
 
 //渲染文字
-export function renderText(text) {
-  utils.hook(this, text.created, [text]);
+export function renderText(opts) {
+  utils.hook(this, opts.created, [opts]);
   const canvasCtx = this.canvasCtx;
-  canvasCtx.font = text.font || '15px arial, 微软雅黑, sans-serif';
-  canvasCtx.fillStyle = text.style || '#000';
-  canvasCtx.fillText(text.content, text.x, text.y);
-  utils.hook(this, text.rendered, [text]);
+  canvasCtx.font = opts.font || '15px arial, 微软雅黑, sans-serif';
+  canvasCtx.fillStyle = opts.style || '#000';
+  canvasCtx.fillText(opts.content, opts.x, opts.y);
+  utils.hook(this, opts.rendered, [opts]);
 }
 

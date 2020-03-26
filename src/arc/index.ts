@@ -1,4 +1,4 @@
-export function arc(type, x, y, width, height, radius, color) {
+export function arc(type, x, y, width, height, radius, color): void {
   const ctx = this.canvasCtx;
   ctx.beginPath();
   ctx.lineWidth = 1;

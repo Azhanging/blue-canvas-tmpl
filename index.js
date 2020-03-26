@@ -1,1 +1,1 @@
-module.exports = require('./dist/static/js/blue-canvas-tmpl');
+module.exports = require('./dist/blue-canvas-tmpl');
