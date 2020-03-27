@@ -2,7 +2,8 @@
   "name": "blue-canvas-tmpl",
   "version": "1.0.6",
   "description": "blue-canvas-tmpl",
-  "main": "./index.js",
+  "main": "./dist/blue-canvas-tmpl.js",
+  "types": "./types/index.js",
   "scripts": {
     "dev": "webpack-dev-server --config blue-build-library/dev.js",
     "build": "node blue-build-library/build.js"
@@ -31,15 +32,9 @@
     "uglifyjs-webpack-plugin": "^1.1.1",
     "webpack": "^4.42.0",
     "webpack-cli": "^3.3.11",
-    "webpack-dev-server": "^2.11.2",
+    "webpack-dev-server": "^3.10.3",
     "webpack-merge": "^4.1.2"
   },
-  "files": [
-    "dist",
-    "LICENSE",
-    "README.md",
-    "index.js"
-  ],
   "repositories": [
     "https://github.com/Azhanging/blue-canvas-tmpl"
   ],
@@ -48,7 +43,7 @@
     "web": "https://github.com/Azhanging/blue-canvas-tmpl"
   },
   "dependencies": {
-    "blue-queue-pipe": "^1.0.2",
-    "blue-utils": "^1.1.1"
+    "blue-queue-pipe": "^1.0.8",
+    "blue-utils": "^1.1.4"
   }
 }

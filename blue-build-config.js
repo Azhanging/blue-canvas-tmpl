@@ -9,6 +9,21 @@ const output = {
 
 const name = `blue-canvas-tmpl`;
 
+const externals = {
+  'blue-utils': {
+    commonjs: "blueUtils",
+    commonjs2: "blueUtils",
+    amd: "blueUtils",
+    root: "blueUtils"
+  },
+  'blue-queue-pipe':{
+    commonjs: "BlueQueuePipe",
+    commonjs2: "BlueQueuePipe",
+    amd: "BlueQueuePipe",
+    root: "BlueQueuePipe"
+  }
+};
+
 module.exports = {
   library: {
     name,
@@ -22,7 +37,8 @@ module.exports = {
       output
     },
     prod: {
-      output
+      output,
+      externals
     }
   }
 };

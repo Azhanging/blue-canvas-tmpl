@@ -1,21 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="19cb22b6-b93c-424e-a9de-fd56d9912435" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/.babelrc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/library.js" beforeDir="false" afterPath="$PROJECT_DIR$/build/library.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/dist/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/static/js/blue-canvas-tmpl.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/static/js/blue-canvas-tmpl.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/static/js/blue-canvas-tmpl.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/dist/static/js/blue-canvas-tmpl.js.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/static/js/blue-canvas-tmpl.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/static/js/blue-canvas-tmpl.min.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/static/js/blue-canvas-tmpl.min.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/dist/static/js/blue-canvas-tmpl.min.js.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/img/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/img/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/instance/init.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/instance/init.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/render/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/render/index.js" afterDir="false" />
-    </list>
+    <list default="true" id="19cb22b6-b93c-424e-a9de-fd56d9912435" name="Default" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -52,11 +38,14 @@
     <property name="HbShouldOpenHtmlAsHb" value="" />
     <property name="JavaScriptWeakerCompletionTypeGuess" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../blue-utils" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../blue-queue-pipe" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.tslint" value="" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="preferences.sourceCode.TypeScript" />
-    <property name="ts.external.directory.path" value="E:\achang\web\blue-canvas-tmpl\node_modules\typescript\lib" />
+    <property name="settings.editor.selected.configurable" value="configurable.group.language" />
+    <property name="ts.external.directory.path" value="E:\achang\github\blue-canvas-tmpl\node_modules\typescript\lib" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -65,7 +54,7 @@
       <recent name="D:\achang\web\blue-canvas-tmpl\src\canvas" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="npm.build">
     <configuration name="build" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
       <package-json value="$PROJECT_DIR$/package.json" />
       <command value="run" />
@@ -76,8 +65,19 @@
       <envs />
       <method v="2" />
     </configuration>
+    <configuration name="dev" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="dev" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="npm.dev" />
         <item itemvalue="npm.build" />
       </list>
     </recent_temporary>
@@ -102,6 +102,8 @@
       <workItem from="1585051650407" duration="599000" />
       <workItem from="1585143340351" duration="6887000" />
       <workItem from="1585229071709" duration="4525000" />
+      <workItem from="1585297697487" duration="1722000" />
+      <workItem from="1585300706894" duration="3342000" />
     </task>
     <servers />
   </component>
@@ -109,26 +111,26 @@
     <option name="version" value="1" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="740" y="275" key="FileChooserDialogImpl" timestamp="1585232972330">
+    <state x="740" y="275" key="FileChooserDialogImpl" timestamp="1585302418787">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="740" y="275" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1585232972330" />
-    <state width="1899" height="255" key="GridCell.Tab.0.bottom" timestamp="1585231848710">
+    <state x="740" y="275" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1585302418787" />
+    <state width="1899" height="372" key="GridCell.Tab.0.bottom" timestamp="1585303816147">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1899" height="255" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1585231848710" />
-    <state width="1899" height="255" key="GridCell.Tab.0.center" timestamp="1585231848709">
+    <state width="1899" height="372" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1585303816147" />
+    <state width="1899" height="372" key="GridCell.Tab.0.center" timestamp="1585303816147">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1899" height="255" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1585231848709" />
-    <state width="1899" height="255" key="GridCell.Tab.0.left" timestamp="1585231848709">
+    <state width="1899" height="372" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1585303816147" />
+    <state width="1899" height="372" key="GridCell.Tab.0.left" timestamp="1585303816147">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1899" height="255" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1585231848709" />
-    <state width="1899" height="255" key="GridCell.Tab.0.right" timestamp="1585231848709">
+    <state width="1899" height="372" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1585303816147" />
+    <state width="1899" height="372" key="GridCell.Tab.0.right" timestamp="1585303816147">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1899" height="255" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1585231848709" />
+    <state width="1899" height="372" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1585303816147" />
     <state x="461" y="162" key="SettingsEditor" timestamp="1585147254945">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
