@@ -1,12 +1,11 @@
-import { initCanvas } from "../canvas";
-import utils from 'blue-utils';
+import { initCanvas } from '../canvas';
+import utils from '../utils';
 import { load } from '../img';
 import { saveCanvasDefaultProperties } from '../canvas';
 
 function init () {
 	//预加载队列
 	this.loadQueue = [];
-	this.id = 0;
 	const { canvas, canvasCtx } = initCanvas.call(this);
 	if (!canvas) {
 		return console.warn(`element is null`);

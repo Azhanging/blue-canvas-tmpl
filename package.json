@@ -3,7 +3,7 @@
   "version": "1.0.6",
   "description": "blue-canvas-tmpl",
   "main": "./dist/blue-canvas-tmpl.js",
-  "types": "./types/index.js",
+  "types": "./types/index.d.js",
   "scripts": {
     "dev": "webpack-dev-server --config blue-build-library/dev.js",
     "build": "node blue-build-library/build.js"
@@ -43,7 +43,6 @@
     "web": "https://github.com/Azhanging/blue-canvas-tmpl"
   },
   "dependencies": {
-    "blue-queue-pipe": "^1.0.8",
-    "blue-utils": "^1.1.4"
+    "blue-queue-pipe": "^1.0.10"
   }
 }

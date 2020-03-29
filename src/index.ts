@@ -1,3 +1,3 @@
-import BlueCanvasTmpl from './instance';
+import BlueCanvasTmpl from "./instance";
 
 export default BlueCanvasTmpl;

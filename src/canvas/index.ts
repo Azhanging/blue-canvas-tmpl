@@ -1,4 +1,4 @@
-import utils from 'blue-utils';
+import utils from '../utils';
 import canvasProperties from './canvas-properties';
 
 export function initCanvas (): any {

@@ -1,43 +1,50 @@
-import utils from 'blue-utils';
+import utils from '../utils';
 import init from './init';
 import { renderText } from '../render';
 import { arc } from '../arc';
 import { getByteLength } from '../text';
+import BlueQueuePipe from 'blue-queue-pipe';
 
 interface BlueCanvasTmplOpts {
 	width?: number;
 	height?: number;
 	created?: Function;
+	rendered?: Function;
+	el?: string;
 	renderList?: (Function | {
-		type: 'image' | 'text',
-		x: number;
-		y: number;
+		type: 'image' | 'text';
+		drawType: 'fill' | 'stroke';
+		src?: string;
+		x?: number;
+		y?: number;
+		width?: number;
+		height?: number;
 		font?: string;
 		style?: string;
 		created?: Function;
 		rendered?: Function;
 	})[];
-	rendered?: Function;
-	el?: string;
 }
 
 class BlueCanvasTmpl {
 	//配置选项
-	private options: BlueCanvasTmplOpts;
+	private options: BlueCanvasTmplOpts = {};
 	//加载队列存储
-	private loadQueue: any[];
+	private loadQueue: BlueQueuePipe;
 	//画布context
 	private canvasCtx: CanvasRenderingContext2D;
 	//画布Element
 	private canvas: any = {};
+	//当前渲染id
 	private id: number = 0;
 
-	constructor ( opts = {} ) {
+	constructor ( opts: BlueCanvasTmplOpts = {} ) {
 		this.options = opts;
+		this.id = 0;
 		init.call(this);
 	}
 
-	renderText ( text ): void {
+	renderText ( text: string ): void {
 		renderText.call(this, text);
 	}
 
@@ -50,7 +57,7 @@ class BlueCanvasTmpl {
 	}
 
 	//更新
-	update ( options ?: BlueCanvasTmplOpts ) {
+	update ( options?: BlueCanvasTmplOpts ): void {
 		if (options) {
 			this.options = options;
 		}
@@ -58,15 +65,21 @@ class BlueCanvasTmpl {
 		init.call(this);
 	}
 
-	arc () {
-		arc.apply(this, arguments);
+	arc ( ...args: any[] ): void {
+		arc.apply(this, [...args]);
 	}
 
-	getByteLength () {
+	getByteLength (): number | {
+		val: string;
+		lastVal: string;
+	} {
 		return getByteLength.apply(this, arguments);
 	}
 
-	static getByteLength () {
+	static getByteLength (): number | {
+		val: string;
+		lastVal: string;
+	} {
 		return getByteLength.apply(this, arguments);
 	}
 

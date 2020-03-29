@@ -1,5 +1,5 @@
-import utils from 'blue-utils';
 import BlueQueuePipe from 'blue-queue-pipe';
+import utils from '../utils';
 import render from '../render';
 
 //预加载
@@ -45,16 +45,18 @@ function loadImages ( images ) {
 			image.id = this.id;
 			image.onload = () => {
 				//限定执行的id
-				if (parseInt(image.id) === id) {
-					img.image = image;
-					//队列下一跳
-					this.loadQueue.useMethod('next');
-				}
+				if (parseInt(image.id) !== id) return;
+				//写入图片到配置
+				img.image = image;
+				//队列下一跳
+				this.loadQueue.useMethod('next');
 			};
 
 			image.onerror = () => {
 				//队列下一跳
-				console.log(`load error:${image.src}`);
+				console.warn(`load error:${image.src}`);
+				//限定执行的id
+				if (parseInt(image.id) !== id) return;
 				this.loadQueue.useMethod('next');
 			};
 
