@@ -42,14 +42,14 @@
     <property name="HbShouldOpenHtmlAsHb" value="" />
     <property name="JavaScriptWeakerCompletionTypeGuess" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../blue-utils" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../blue-egg-program" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.tslint" value="project" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="settings.typescriptcompiler" />
-    <property name="ts.external.directory.path" value="E:\achang\web\blue-canvas-tmpl\node_modules\typescript\lib" />
+    <property name="ts.external.directory.path" value="E:\achang\github\blue-canvas-tmpl\node_modules\typescript\lib" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -81,8 +81,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="npm.build" />
         <item itemvalue="npm.dev" />
+        <item itemvalue="npm.build" />
       </list>
     </recent_temporary>
   </component>
@@ -116,6 +116,8 @@
       <workItem from="1585376711856" duration="8061000" />
       <workItem from="1585452314588" duration="75000" />
       <workItem from="1585452397636" duration="9224000" />
+      <workItem from="1585555297339" duration="9000" />
+      <workItem from="1585792990699" duration="1196000" />
     </task>
     <servers />
   </component>
@@ -123,26 +125,26 @@
     <option name="version" value="1" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="740" y="275" key="FileChooserDialogImpl" timestamp="1585456247612">
+    <state x="740" y="275" key="FileChooserDialogImpl" timestamp="1585796665000">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="740" y="275" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1585456247612" />
-    <state width="1899" height="183" key="GridCell.Tab.0.bottom" timestamp="1585479143404">
+    <state x="740" y="275" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1585796665000" />
+    <state width="1899" height="463" key="GridCell.Tab.0.bottom" timestamp="1585796666401">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1899" height="183" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1585479143404" />
-    <state width="1899" height="183" key="GridCell.Tab.0.center" timestamp="1585479143404">
+    <state width="1899" height="463" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1585796666401" />
+    <state width="1899" height="463" key="GridCell.Tab.0.center" timestamp="1585796666400">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1899" height="183" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1585479143404" />
-    <state width="1899" height="183" key="GridCell.Tab.0.left" timestamp="1585479143404">
+    <state width="1899" height="463" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1585796666400" />
+    <state width="1899" height="463" key="GridCell.Tab.0.left" timestamp="1585796666400">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1899" height="183" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1585479143404" />
-    <state width="1899" height="183" key="GridCell.Tab.0.right" timestamp="1585479143404">
+    <state width="1899" height="463" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1585796666400" />
+    <state width="1899" height="463" key="GridCell.Tab.0.right" timestamp="1585796666400">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1899" height="183" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1585479143404" />
+    <state width="1899" height="463" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1585796666400" />
     <state x="461" y="162" key="SettingsEditor" timestamp="1585382232431">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>

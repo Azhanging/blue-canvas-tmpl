@@ -4,7 +4,7 @@
  * (c) 2016-2020 Blue
  * Released under the MIT License.
  * https://github.com/azhanging/blue-canvas-tmpl
- * time:Sun, 29 Mar 2020 06:00:53 GMT
+ * time:Thu, 02 Apr 2020 02:04:17 GMT
  * 
  */
 (function webpackUniversalModuleDefinition(root, factory) {
@@ -125,13 +125,21 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _render__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(10);
 /* harmony import */ var _arc__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(11);
 /* harmony import */ var _text__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(12);
+var __spreadArrays = (undefined && undefined.__spreadArrays) || function () {
+    for (var s = 0, i = 0, il = arguments.length; i < il; i++) s += arguments[i].length;
+    for (var r = Array(s), k = 0, i = 0; i < il; i++)
+        for (var a = arguments[i], j = 0, jl = a.length; j < jl; j++, k++)
+            r[k] = a[j];
+    return r;
+};
 
 
 
 
 
-class BlueCanvasTmpl {
-    constructor(opts = {}) {
+var BlueCanvasTmpl = /** @class */ (function () {
+    function BlueCanvasTmpl(opts) {
+        if (opts === void 0) { opts = {}; }
         //配置选项
         this.options = {};
         //画布Element
@@ -142,34 +150,40 @@ class BlueCanvasTmpl {
         this.id = 0;
         _init__WEBPACK_IMPORTED_MODULE_1__["default"].call(this);
     }
-    renderText(text) {
+    BlueCanvasTmpl.prototype.renderText = function (text) {
         _render__WEBPACK_IMPORTED_MODULE_2__["renderText"].call(this, text);
-    }
+    };
     //初始化canvas context的属性
-    resetCanvasProperties() {
-        const { defaultCanvasProperties } = this.canvas;
-        _utils__WEBPACK_IMPORTED_MODULE_0__["default"].each(defaultCanvasProperties, (value, key) => {
-            this.canvasCtx[key] = value;
+    BlueCanvasTmpl.prototype.resetCanvasProperties = function () {
+        var _this = this;
+        var defaultCanvasProperties = this.canvas.defaultCanvasProperties;
+        _utils__WEBPACK_IMPORTED_MODULE_0__["default"].each(defaultCanvasProperties, function (value, key) {
+            _this.canvasCtx[key] = value;
         });
-    }
+    };
     //更新
-    update(options) {
+    BlueCanvasTmpl.prototype.update = function (options) {
         if (options) {
             this.options = options;
         }
         this.canvasCtx.clearRect(0, 0, this.options.width || 100, this.options.height || 100);
         _init__WEBPACK_IMPORTED_MODULE_1__["default"].call(this);
-    }
-    arc(...args) {
-        _arc__WEBPACK_IMPORTED_MODULE_3__["arc"].apply(this, [...args]);
-    }
-    getByteLength() {
+    };
+    BlueCanvasTmpl.prototype.arc = function () {
+        var args = [];
+        for (var _i = 0; _i < arguments.length; _i++) {
+            args[_i] = arguments[_i];
+        }
+        _arc__WEBPACK_IMPORTED_MODULE_3__["arc"].apply(this, __spreadArrays(args));
+    };
+    BlueCanvasTmpl.prototype.getByteLength = function () {
         return _text__WEBPACK_IMPORTED_MODULE_4__["getByteLength"].apply(this, arguments);
-    }
-    static getByteLength() {
+    };
+    BlueCanvasTmpl.getByteLength = function () {
         return _text__WEBPACK_IMPORTED_MODULE_4__["getByteLength"].apply(this, arguments);
-    }
-}
+    };
+    return BlueCanvasTmpl;
+}());
 /* harmony default export */ __webpack_exports__["default"] = (BlueCanvasTmpl);
 
 
@@ -179,32 +193,34 @@ class BlueCanvasTmpl {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-const blueUtils = {
+var blueUtils = {
     //是否为数组
-    isArray(val) {
+    isArray: function (val) {
         return val instanceof Array;
     },
     //是否为undefine 或者 null
-    isUndef(val) {
+    isUndef: function (val) {
         return val === undefined || val === null;
     },
     //是否为function
-    isFunction(fn) {
+    isFunction: function (fn) {
         return typeof fn === 'function';
     },
     //执行function
-    hook(context, cb, args = []) {
+    hook: function (context, cb, args) {
+        if (args === void 0) { args = []; }
         if (this.isFunction(cb)) {
             return cb.apply(context, args);
         }
         return cb;
     },
     //遍历
-    each(obj, cb, isReturn = false) {
+    each: function (obj, cb, isReturn) {
+        if (isReturn === void 0) { isReturn = false; }
         if (this.isUndef(obj))
             return;
-        let i = 0, index = 0, newVal = [];
-        const len = obj.length;
+        var i = 0, index = 0, newVal = [];
+        var len = obj.length;
         if (this.isArray(obj)) {
             for (; i < len; i++) {
                 if (isReturn) {
@@ -250,9 +266,9 @@ __webpack_require__.r(__webpack_exports__);
 function init() {
     //预加载队列
     this.loadQueue = [];
-    const { canvas, canvasCtx } = _canvas__WEBPACK_IMPORTED_MODULE_0__["initCanvas"].call(this);
+    var _a = _canvas__WEBPACK_IMPORTED_MODULE_0__["initCanvas"].call(this), canvas = _a.canvas, canvasCtx = _a.canvasCtx;
     if (!canvas) {
-        return console.warn(`element is null`);
+        return console.warn("element is null");
     }
     this.canvasCtx = canvasCtx;
     this.canvas = canvas;
@@ -278,26 +294,27 @@ __webpack_require__.r(__webpack_exports__);
 
 
 function initCanvas() {
-    const options = this.options;
+    var options = this.options;
     if (!options.el)
         return {};
-    const canvas = document.querySelector(options.el);
+    var canvas = document.querySelector(options.el);
     if (!canvas)
         return {};
-    const canvasCtx = canvas.getContext('2d');
+    var canvasCtx = canvas.getContext('2d');
     canvas.width = options.width;
     canvas.height = options.height;
     return {
-        canvasCtx,
-        canvas
+        canvasCtx: canvasCtx,
+        canvas: canvas
     };
 }
 //save canvas default attributes
 function saveCanvasDefaultProperties() {
+    var _this = this;
     if (!this.canvas.defaultCanvasProperties) {
         this.canvas.defaultCanvasProperties = {};
-        _utils__WEBPACK_IMPORTED_MODULE_0__["default"].each(_canvas_properties__WEBPACK_IMPORTED_MODULE_1__["default"], (key) => {
-            this.canvas.defaultCanvasProperties[key] = this.canvasCtx[key];
+        _utils__WEBPACK_IMPORTED_MODULE_0__["default"].each(_canvas_properties__WEBPACK_IMPORTED_MODULE_1__["default"], function (key) {
+            _this.canvas.defaultCanvasProperties[key] = _this.canvasCtx[key];
         });
     }
 }
@@ -310,7 +327,7 @@ function saveCanvasDefaultProperties() {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 //default canvas config
-const canvasProperties = [
+var canvasProperties = [
     "fillStyle",
     "filter",
     "font",
@@ -350,12 +367,12 @@ __webpack_require__.r(__webpack_exports__);
 
 //预加载
 function load() {
-    const blueCanvasTmpl = this;
+    var blueCanvasTmpl = this;
     this.id++;
     //设置预加载的队列
     this.loadQueue = new blue_queue_pipe__WEBPACK_IMPORTED_MODULE_0___default.a({
         methods: {
-            next() {
+            next: function () {
                 if (!this.isEmpty()) {
                     _utils__WEBPACK_IMPORTED_MODULE_1__["default"].hook(this, this.dequeue());
                 }
@@ -371,9 +388,9 @@ function load() {
 }
 //查找图片
 function findImages() {
-    const { renderList } = this.options;
-    const images = [];
-    _utils__WEBPACK_IMPORTED_MODULE_1__["default"].each(renderList, (item) => {
+    var renderList = this.options.renderList;
+    var images = [];
+    _utils__WEBPACK_IMPORTED_MODULE_1__["default"].each(renderList, function (item) {
         if (item.type === 'image') {
             images.push(item);
         }
@@ -382,29 +399,30 @@ function findImages() {
 }
 //预加载图片
 function loadImages(images) {
-    const id = this.id;
-    (images || []).forEach((img) => {
+    var _this = this;
+    var id = this.id;
+    (images || []).forEach(function (img) {
         if (!img.src)
             return;
-        this.loadQueue.enqueue(() => {
-            const image = new Image();
-            image.id = this.id;
-            image.onload = () => {
+        _this.loadQueue.enqueue(function () {
+            var image = new Image();
+            image.id = _this.id;
+            image.onload = function () {
                 //限定执行的id
                 if (parseInt(image.id) !== id)
                     return;
                 //写入图片到配置
                 img.image = image;
                 //队列下一跳
-                this.loadQueue.useMethod('next');
+                _this.loadQueue.useMethod('next');
             };
-            image.onerror = () => {
+            image.onerror = function () {
                 //队列下一跳
-                console.warn(`load error:${image.src}`);
+                console.warn("load error:" + image.src);
                 //限定执行的id
                 if (parseInt(image.id) !== id)
                     return;
-                this.loadQueue.useMethod('next');
+                _this.loadQueue.useMethod('next');
             };
             image.src = img.src;
         });
@@ -423,19 +441,15 @@ module.exports = __webpack_require__(8);
 /* 8 */
 /***/ (function(module, exports, __webpack_require__) {
 
-/* WEBPACK VAR INJECTION */(function(module) {var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+/* WEBPACK VAR INJECTION */(function(module) {var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
 /*!
  * 
- * blue-queue-pipe.js 1.0.9
+ * blue-queue-pipe.js 1.1.0
  * (c) 2016-2020 Blue
  * Released under the MIT License.
  * https://github.com/azhanging/blue-queue-pipe
- * time:Sat, 28 Mar 2020 15:49:57 GMT
+ * time:Thu, 02 Apr 2020 02:01:03 GMT
  * 
  */
 (function webpackUniversalModuleDefinition(root, factory) {
@@ -559,120 +573,88 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
             /*
             * 队列管道
             * */
-
-            var BlueQueuePipe = function () {
-                function BlueQueuePipe() {
-                    var opts = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
-
-                    _classCallCheck(this, BlueQueuePipe);
-
+            var BlueQueuePipe = /** @class */function () {
+                function BlueQueuePipe(opts) {
+                    if (opts === void 0) {
+                        opts = {};
+                    }
                     this._init(opts);
                 }
-
-                _createClass(BlueQueuePipe, [{
-                    key: '_init',
-                    value: function _init(opts) {
-                        //配置
-                        this.options = opts;
-                        //队列
-                        this.queue = [];
-                        //数据
-                        this.data = opts.data || {};
+                BlueQueuePipe.prototype._init = function (opts) {
+                    //配置
+                    this.options = opts;
+                    //队列
+                    this.queue = [];
+                    //数据
+                    this.data = opts.data || {};
+                };
+                BlueQueuePipe.prototype.enqueue = function (obj) {
+                    this.hook(this, this.options.enqueued, [this.queue.push(obj)]);
+                };
+                BlueQueuePipe.prototype.dequeue = function () {
+                    var _a = this,
+                        queue = _a.queue,
+                        options = _a.options;
+                    var dequeue = queue.shift();
+                    this.hook(this, options.dequeued, [dequeue]);
+                    return dequeue;
+                };
+                BlueQueuePipe.prototype.isEmpty = function () {
+                    return this.queue.length === 0;
+                };
+                BlueQueuePipe.prototype.clear = function () {
+                    this.queue = [];
+                };
+                BlueQueuePipe.prototype.first = function () {
+                    return this.queue[0];
+                };
+                //获取最后一个队列
+                BlueQueuePipe.prototype.last = function () {
+                    return this.queue[this.queue.length - 1];
+                };
+                //执行队列
+                BlueQueuePipe.prototype.run = function () {
+                    var _this = this;
+                    var args = [];
+                    for (var _i = 0; _i < arguments.length; _i++) {
+                        args[_i] = arguments[_i];
                     }
-                }, {
-                    key: 'enqueue',
-                    value: function enqueue(obj) {
-                        this.hook(this, this.options.enqueued, [this.queue.push(obj)]);
+                    var opts = this.options;
+                    var _loop_1 = function _loop_1() {
+                        var dequeue = this_1.dequeue();
+                        //如果队列项是function，执行
+                        this_1.hook(this_1, opts.running, [function () {
+                            if (typeof dequeue === 'function') {
+                                return dequeue.apply(_this, args);
+                            }
+                            return dequeue;
+                        }()]);
+                    };
+                    var this_1 = this;
+                    while (!this.isEmpty()) {
+                        _loop_1();
                     }
-                }, {
-                    key: 'dequeue',
-                    value: function dequeue() {
-                        var queue = this.queue,
-                            options = this.options;
-
-                        var dequeue = queue.shift();
-                        this.hook(this, options.dequeued, [dequeue]);
-                        return dequeue;
+                    this.hook(this, opts.ran);
+                };
+                //执行function
+                BlueQueuePipe.prototype.hook = function (context, cb, args) {
+                    if (args === void 0) {
+                        args = [];
                     }
-                }, {
-                    key: 'isEmpty',
-                    value: function isEmpty() {
-                        return this.queue.length === 0;
+                    if (typeof cb === 'function') {
+                        return cb.apply(context, args);
                     }
-                }, {
-                    key: 'clear',
-                    value: function clear() {
-                        this.queue = [];
-                    }
-                }, {
-                    key: 'first',
-                    value: function first() {
-                        return this.queue[0];
-                    }
-                    //获取最后一个队列
-
-                }, {
-                    key: 'last',
-                    value: function last() {
-                        return this.queue[this.queue.length - 1];
-                    }
-                    //执行队列
-
-                }, {
-                    key: 'run',
-                    value: function run() {
-                        var _this = this;
-
-                        for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
-                            args[_key] = arguments[_key];
-                        }
-
-                        var opts = this.options;
-
-                        var _loop = function _loop() {
-                            var dequeue = _this.dequeue();
-                            //如果队列项是function，执行
-                            _this.hook(_this, opts.running, [function () {
-                                if (typeof dequeue === 'function') {
-                                    return dequeue.apply(_this, args);
-                                }
-                                return dequeue;
-                            }()]);
-                        };
-
-                        while (!this.isEmpty()) {
-                            _loop();
-                        }
-                        this.hook(this, opts.ran);
-                    }
-                    //执行function
-
-                }, {
-                    key: 'hook',
-                    value: function hook(context, cb) {
-                        var args = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : [];
-
-                        if (typeof cb === 'function') {
-                            return cb.apply(context, args);
-                        }
-                        return cb;
-                    }
-                    //使用方法
-
-                }, {
-                    key: 'useMethod',
-                    value: function useMethod(name, args) {
-                        var opts = this.options;
-                        if (!opts.methods) return;
-                        return this.hook(this, opts.methods[name], args || []);
-                    }
-                }]);
-
+                    return cb;
+                };
+                //使用方法
+                BlueQueuePipe.prototype.useMethod = function (name, args) {
+                    var opts = this.options;
+                    if (!opts.methods) return;
+                    return this.hook(this, opts.methods[name], args || []);
+                };
                 return BlueQueuePipe;
             }();
-            /* harmony default export */
-
-            __webpack_exports__["default"] = BlueQueuePipe;
+            /* harmony default export */__webpack_exports__["default"] = BlueQueuePipe;
 
             /***/
         }]
@@ -721,19 +703,20 @@ __webpack_require__.r(__webpack_exports__);
 
 //渲染
 function render() {
-    const options = this.options;
-    const renderList = options.renderList;
-    (renderList || []).forEach((item) => {
+    var _this = this;
+    var options = this.options;
+    var renderList = options.renderList;
+    (renderList || []).forEach(function (item) {
         if (item.type === 'image') {
-            renderImg.call(this, item);
+            renderImg.call(_this, item);
         }
         else if (item.type === 'text') {
-            renderText.call(this, item);
+            renderText.call(_this, item);
         }
         else if (_utils__WEBPACK_IMPORTED_MODULE_0__["default"].isFunction(item)) {
-            _utils__WEBPACK_IMPORTED_MODULE_0__["default"].hook(this, item);
+            _utils__WEBPACK_IMPORTED_MODULE_0__["default"].hook(_this, item);
         }
-        this.resetCanvasProperties();
+        _this.resetCanvasProperties();
     });
     _utils__WEBPACK_IMPORTED_MODULE_0__["default"].hook(this, options.rendered);
 }
@@ -749,10 +732,10 @@ function renderImg(opts) {
 //渲染文字
 function renderText(opts) {
     _utils__WEBPACK_IMPORTED_MODULE_0__["default"].hook(this, opts.created, [opts]);
-    const canvasCtx = this.canvasCtx;
+    var canvasCtx = this.canvasCtx;
     canvasCtx.font = opts.font || '15px arial, 微软雅黑, sans-serif';
-    canvasCtx[`${opts.drawType || 'fill'}Style`] = opts.style || '#000';
-    canvasCtx[`${opts.drawType || 'fill'}Text`](opts.content, opts.x, opts.y);
+    canvasCtx[(opts.drawType || 'fill') + "Style"] = opts.style || '#000';
+    canvasCtx[(opts.drawType || 'fill') + "Text"](opts.content, opts.x, opts.y);
     _utils__WEBPACK_IMPORTED_MODULE_0__["default"].hook(this, opts.rendered, [opts]);
 }
 
@@ -765,7 +748,7 @@ function renderText(opts) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "arc", function() { return arc; });
 function arc(type, x, y, width, height, radius, color) {
-    const ctx = this.canvasCtx;
+    var ctx = this.canvasCtx;
     ctx.beginPath();
     ctx.lineWidth = 1;
     ctx[type + 'Style'] = color;
@@ -792,10 +775,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getByteLength", function() { return getByteLength; });
 /* harmony import */ var _device__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(13);
 
-function getByteLength(content, length, last = false) {
-    let len = 0;
-    for (let i = 0; i < content.length; i++) {
-        let char = content.charAt(i);
+function getByteLength(content, length, last) {
+    if (last === void 0) { last = false; }
+    var len = 0;
+    for (var i = 0; i < content.length; i++) {
+        var char = content.charAt(i);
         if (char.match(/[\u4E00-\u9FBF]/ig) != null ||
             char.match(/[\u2014\u300a\u300b]/g) ||
             (char.match(/[\uff0c\u3002\u201c\uff1a\u201d\u2014]/ig) != null && !_device__WEBPACK_IMPORTED_MODULE_0__["default"].isWap) ||
@@ -831,11 +815,11 @@ function getByteLength(content, length, last = false) {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 //获取当前设备信息
-const userAgent = navigator.userAgent;
-const isWap = /iPhone|iPad|Android|Windows Phone|KFAPWI|MeeGo/ig.test(userAgent);
-const device = {
+var userAgent = navigator.userAgent;
+var isWap = /iPhone|iPad|Android|Windows Phone|KFAPWI|MeeGo/ig.test(userAgent);
+var device = {
     isWeChat: /MicroMessenger/ig.test(userAgent),
-    isWap,
+    isWap: isWap,
     isIPhone: /iPhone/ig.test(userAgent),
     isIPad: /iPad/ig.test(userAgent),
     isAndroid: /Android/ig.test(userAgent),
