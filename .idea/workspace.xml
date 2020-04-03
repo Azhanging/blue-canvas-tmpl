@@ -41,8 +41,9 @@
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="HbShouldOpenHtmlAsHb" value="" />
     <property name="JavaScriptWeakerCompletionTypeGuess" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../blue-egg-program" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../blue-uni-app-program" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.tslint" value="project" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
@@ -118,6 +119,7 @@
       <workItem from="1585452397636" duration="9224000" />
       <workItem from="1585555297339" duration="9000" />
       <workItem from="1585792990699" duration="1196000" />
+      <workItem from="1585901007373" duration="1378000" />
     </task>
     <servers />
   </component>
@@ -125,26 +127,26 @@
     <option name="version" value="1" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="740" y="275" key="FileChooserDialogImpl" timestamp="1585796665000">
+    <state x="740" y="275" key="FileChooserDialogImpl" timestamp="1585902528311">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="740" y="275" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1585796665000" />
-    <state width="1899" height="463" key="GridCell.Tab.0.bottom" timestamp="1585796666401">
+    <state x="740" y="275" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1585902528311" />
+    <state width="1899" height="338" key="GridCell.Tab.0.bottom" timestamp="1585902531007">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1899" height="463" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1585796666401" />
-    <state width="1899" height="463" key="GridCell.Tab.0.center" timestamp="1585796666400">
+    <state width="1899" height="338" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1585902531007" />
+    <state width="1899" height="338" key="GridCell.Tab.0.center" timestamp="1585902531007">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1899" height="463" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1585796666400" />
-    <state width="1899" height="463" key="GridCell.Tab.0.left" timestamp="1585796666400">
+    <state width="1899" height="338" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1585902531007" />
+    <state width="1899" height="338" key="GridCell.Tab.0.left" timestamp="1585902531007">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1899" height="463" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1585796666400" />
-    <state width="1899" height="463" key="GridCell.Tab.0.right" timestamp="1585796666400">
+    <state width="1899" height="338" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1585902531007" />
+    <state width="1899" height="338" key="GridCell.Tab.0.right" timestamp="1585902531007">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1899" height="463" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1585796666400" />
+    <state width="1899" height="338" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1585902531007" />
     <state x="461" y="162" key="SettingsEditor" timestamp="1585382232431">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -153,10 +155,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="680" y="123" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1585371585744" />
-    <state x="636" y="253" width="647" height="534" key="find.popup" timestamp="1585457599608">
+    <state x="636" y="253" width="647" height="534" key="find.popup" timestamp="1585901420088">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="636" y="253" width="647" height="534" key="find.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1585457599608" />
+    <state x="636" y="253" width="647" height="534" key="find.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1585901420088" />
     <state x="552" y="178" key="scopes" timestamp="1585320762767">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>

@@ -1,5 +1,5 @@
 //获取当前设备信息
-const userAgent = navigator.userAgent;
+const userAgent = window.navigator.userAgent;
 const isWap = /iPhone|iPad|Android|Windows Phone|KFAPWI|MeeGo/ig.test(userAgent);
 
 const device = {

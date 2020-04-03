@@ -1,6 +1,6 @@
 {
   "name": "blue-canvas-tmpl",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "blue-canvas-tmpl",
   "main": "./dist/blue-canvas-tmpl.js",
   "types": "./types/index.d.js",
@@ -43,6 +43,6 @@
     "web": "https://github.com/Azhanging/blue-canvas-tmpl"
   },
   "dependencies": {
-    "blue-queue-pipe": "^1.0.10"
+    "blue-queue-pipe": "^1.1.1"
   }
 }

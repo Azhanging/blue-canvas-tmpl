@@ -4,6 +4,7 @@ const package = require('./package');
 const output = {
   library: "BlueCanvasTmpl",
   libraryTarget: 'umd',
+  globalObject: "typeof self !== 'undefined' ? self : this",
   libraryExport: 'default'
 };
 

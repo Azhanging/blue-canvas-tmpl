@@ -1,10 +1,10 @@
 /*!
  * 
- * blue-canvas-tmpl.js 1.0.6
+ * blue-canvas-tmpl.js 1.0.7
  * (c) 2016-2020 Blue
  * Released under the MIT License.
  * https://github.com/azhanging/blue-canvas-tmpl
- * time:Thu, 02 Apr 2020 02:04:17 GMT
+ * time:Fri, 03 Apr 2020 08:05:51 GMT
  * 
  */
 (function webpackUniversalModuleDefinition(root, factory) {
@@ -16,7 +16,7 @@
 		exports["BlueCanvasTmpl"] = factory();
 	else
 		root["BlueCanvasTmpl"] = factory();
-})(window, function() {
+})(typeof self !== 'undefined' ? self : this, function() {
 return /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
@@ -445,11 +445,11 @@ module.exports = __webpack_require__(8);
 
 /*!
  * 
- * blue-queue-pipe.js 1.1.0
+ * blue-queue-pipe.js 1.1.1
  * (c) 2016-2020 Blue
  * Released under the MIT License.
  * https://github.com/azhanging/blue-queue-pipe
- * time:Thu, 02 Apr 2020 02:01:03 GMT
+ * time:Fri, 03 Apr 2020 08:00:50 GMT
  * 
  */
 (function webpackUniversalModuleDefinition(root, factory) {
@@ -457,7 +457,7 @@ module.exports = __webpack_require__(8);
 				__WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ?
 				(__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__),
 				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));else {}
-})(window, function () {
+})(typeof self !== 'undefined' ? self : this, function () {
     return (/******/function (modules) {
             // webpackBootstrap
             /******/ // The module cache
@@ -815,7 +815,7 @@ function getByteLength(content, length, last) {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 //获取当前设备信息
-var userAgent = navigator.userAgent;
+var userAgent = window.navigator.userAgent;
 var isWap = /iPhone|iPad|Android|Windows Phone|KFAPWI|MeeGo/ig.test(userAgent);
 var device = {
     isWeChat: /MicroMessenger/ig.test(userAgent),
